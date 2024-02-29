@@ -26,6 +26,8 @@ export const login = createAsyncThunk('auth/login', async(user) => {
     }
 })
 
+//Seguir aquí. Diapositiva 7 de presentación Redux Logout y validaciones
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,

@@ -24,7 +24,7 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-
+       
         // if( password !== password2) {
         //     return notification.error ({
         //         message: 'Error',
@@ -36,39 +36,47 @@ const Register = () => {
         //         description: 'Everything ok'
         //     })
             // return dispatch(register(formData))
+            dispatch(register(formData))
             console.log('formData',formData)
         }
     
         return (
             <form onSubmit={onSubmit}>
                 <input 
-                type = "text"
-                name = "name"
-                value = { name }
-                onChange={onChange}
-                placeholder='Tu nombre aquí'
+                    type = "text"
+                    name = "name"
+                    value = { name }
+                    onChange={onChange}
+                    placeholder='Tu nombre aquí'
                 />
                 <input 
-                type = "text"
-                name = "username"
-                value = { username }
-                onChange={onChange}
-                placeholder='Tu nombre de usuario aquí'
+                    type = "text"
+                    name = "username"
+                    value = { username }
+                    onChange={onChange}
+                    placeholder='Tu nombre de usuario aquí'
                 />
                 <input 
-                type = "password"
-                name = "password"
-                value = { password }
-                onChange={onChange}
-                placeholder='Tu contraseña aquí'
+                    type = "password"
+                    name = "password"
+                    value = { password }
+                    onChange={onChange}
+                    placeholder='Tu contraseña aquí'
                 />
                  <input 
-                type = "email"
-                name = "email"
-                value = { email }
-                onChange={ onChange }
-                placeholder='Tu email aquí'
+                    type = "email"
+                    name = "email"
+                    value = { email }
+                    onChange={ onChange }
+                    placeholder='Tu email aquí'
                 />
+                {/* <input
+                    type="password"
+                    name="password2"
+                    value={password2}
+                    onChange={onChange}
+                /> */}
+
                 <button type='submit'>Register</button>
             </form>
         )
@@ -76,3 +84,4 @@ const Register = () => {
 
 
 export default Register
+

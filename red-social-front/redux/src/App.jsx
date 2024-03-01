@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { React } from 'react'
+import Header from '../src/components/TheHeader/'
 import Login from '../src/components/Login/Login'
 import Register from '../src/components/Register/Register'
 import Home from './components/Home/Home'
@@ -13,8 +15,9 @@ function App() {
       <TheHeader />
         <Routes>
           <Route path='/' element= {<Home />} />
-          <Route path='/register' element={ <Register /> } />
           <Route path='login' element={ <Login /> } />
+          <Route path='/register' element={ <Register /> } />
+          <Route path='/profile' element= { <Profile /> } />
         </Routes>
       </BrowserRouter>
     </div>

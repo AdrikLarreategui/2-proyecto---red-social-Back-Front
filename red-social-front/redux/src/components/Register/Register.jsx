@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { register } from '../../redux/auth/authSlice'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { register, reset } from '../../redux/auth/authSlice'
 import { notification } from 'antd'
 
 const Register = () => {
@@ -40,46 +41,65 @@ const Register = () => {
             console.log('formData',formData)
         }
     
-        return (
-            <form onSubmit={onSubmit}>
-                <input 
-                    type = "text"
-                    name = "name"
-                    value = { name }
-                    onChange={onChange}
-                    placeholder='Tu nombre aquí'
-                />
-                <input 
-                    type = "text"
-                    name = "username"
-                    value = { username }
-                    onChange={onChange}
-                    placeholder='Tu nombre de usuario aquí'
-                />
-                <input 
-                    type = "password"
-                    name = "password"
-                    value = { password }
-                    onChange={onChange}
-                    placeholder='Tu contraseña aquí'
-                />
-                 <input 
-                    type = "email"
-                    name = "email"
-                    value = { email }
-                    onChange={ onChange }
-                    placeholder='Tu email aquí'
-                />
-                {/* <input
-                    type="password"
-                    name="password2"
-                    value={password2}
-                    onChange={onChange}
-                /> */}
+    const { isSuccess, message, isError } = useSelector((state) => state.auth);
 
-                <button type='submit'>Register</button>
-            </form>
-        )
+    useEffect(() => {
+        if (isSuccess) {
+          notification.success({
+            message: "Success",
+            description: message,
+          });
+        }
+        if (isError) {
+          notification.error({ 
+            message: "Error", 
+            description: message 
+        });
+        }
+        dispatch(reset())
+      }, [isSuccess, isError, message]);
+    
+
+            return (
+                <form onSubmit={onSubmit}>
+                    <input 
+                        type = "text"
+                        name = "name"
+                        value = { name }
+                        onChange={onChange}
+                        placeholder='Tu nombre aquí'
+                    />
+                    <input 
+                        type = "text"
+                        name = "username"
+                        value = { username }
+                        onChange={onChange}
+                        placeholder='Tu nombre de usuario aquí'
+                    />
+                    <input 
+                        type = "password"
+                        name = "password"
+                        value = { password }
+                        onChange={onChange}
+                        placeholder='Tu contraseña aquí'
+                    />
+                    <input 
+                        type = "email"
+                        name = "email"
+                        value = { email }
+                        onChange={ onChange }
+                        placeholder='Tu email aquí'
+                    />
+                    {/* <input
+                        type="password"
+                        name="password2"
+                        value={password2}
+                        onChange={onChange}
+                    /> */}
+
+                    <button type='submit'>Register</button>
+                </form>
+            )
     }
 
 

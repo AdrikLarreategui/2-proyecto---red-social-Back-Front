@@ -1,0 +1,1 @@
+//COntinuar aquí. Diapositiva 7 de Vista home con los posts, PostDetail

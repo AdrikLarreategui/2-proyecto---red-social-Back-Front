@@ -8,7 +8,8 @@ const Profile = () => {
         <h1>Profile</h1>
         <p>{user.name}</p> 
         <p>{user.email}</p>
-        {/* //Comprobar si se corresponde con lo guardado en la base de datos */}
+        <img src = {`http://localhost:3000/${user.user_img}`}/> 
+        {/* adaptar a formato de base de datos propia */}
         </>
     )
 }

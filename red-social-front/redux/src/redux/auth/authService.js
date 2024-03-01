@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3000' //Esla dirección del puerto donde se haya creado la base del back. Comprobarlo
+const API_URL = 'http://localhost:3000' //Es la dirección del puerto donde se haya creado la base del back. Comprobarlo
 
 const register = async(userData) => {
-    const res = await axios.post(`${API_URL}/users/register`, userData)
+    const res = await axios.post(`${API_URL}/users`, userData)
     return res.data
 }
 
@@ -19,7 +19,7 @@ const login = async(userData) => {
 
 const logout = async () => {
     const token = JSON.parse(localStorage.setItem('token'))
-    const res = await axios.delete(API_URL + 'users/logout', {
+    const res = await axios.post(API_URL + '/users/logout', {
         headers:{
             authorization: token,
         }

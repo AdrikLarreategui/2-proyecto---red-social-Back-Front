@@ -6,6 +6,7 @@ const TheHeader = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { user } = useSelector((state) => state.auth)
+
     const onLogout = (e) => {
         e.preventDefault()
         dispatch(logout())
@@ -14,13 +15,13 @@ const TheHeader = () => {
     
     return(
         <nav>
-        <span>Header</span>
+        <Link to='/'>Home</Link>
+        {/* <span>Header</span> */}
             <div>
                 {user ? (
                     <>
                     <button onClick={onLogout}>Logout</button>
-                    <Link to='/'>Home</Link>
-                    <Link to='/profile'>{user.name}</Link>
+                    <Link to='/profile'>Profile | {user.name}</Link>
                     </>
                     ) : (
                         <>

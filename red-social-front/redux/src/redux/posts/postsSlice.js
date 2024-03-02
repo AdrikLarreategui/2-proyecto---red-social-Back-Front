@@ -23,6 +23,14 @@ export const getById = createAsyncThunk('posts/getById', async(id) => {
     }
 })
 
+export const getPostByName = createAsyncThunk('posts/getPostByName', async(postName) => {
+    try {
+        return await postsService.getPostByName(postName)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,

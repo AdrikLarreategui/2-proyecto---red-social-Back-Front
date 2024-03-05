@@ -17,7 +17,7 @@ const getPostByName = async(postTitle) => {
     return res.data.post
 }
 
-const authService = {
+const postsService = {
     getAll,
     getById,
     getPostByName

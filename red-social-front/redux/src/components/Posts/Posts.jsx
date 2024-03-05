@@ -16,7 +16,7 @@ const Posts = () => {
     return(
         <>
             <h1>Posts</h1>
-            { isLoading ? 'Cargando...' :  <Posts />}
+            { isLoading ? 'Cargando...' :  <Post />}
         </>
     )
 }

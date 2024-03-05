@@ -23,7 +23,7 @@ function App() {
       <TheHeader />
         <Routes>
           <Route path='/' element= {<Home />} />
-          <Route path='login' element={ <Login /> } />
+          <Route path='/login' element={ <Login /> } />
           <Route path='/register' element={ <Register /> } />
           <Route path="/profile" element={<PrivateZone> <Profile /></PrivateZone>}/>
           <Route path='/admin' element= {<AdminZone> <Admin /> </AdminZone> } />

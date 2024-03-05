@@ -54,6 +54,7 @@ const Login = () => {
                 value={ email }
                 onChange={onChange}
                 placeholder="tu email aquí"
+                required
             />
              <input 
                 type="password"
@@ -61,6 +62,7 @@ const Login = () => {
                 value={ password }
                 onChange={onChange}
                 placeholder="tu contraseña aquí"
+                required
             />
             <button type="submit">Login</button>
         </form>

@@ -17,6 +17,11 @@ const Posts = () => {
         <>
             <h1>Posts</h1>
             { isLoading ? 'Cargando...' :  <Post />}
+            {/* {Posts.map(posts => {
+                <>
+                <p>{Posts.name}</p>
+                <>
+            })} */}
         </>
     )
 }

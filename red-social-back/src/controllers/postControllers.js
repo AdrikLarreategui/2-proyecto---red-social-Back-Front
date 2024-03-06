@@ -1,10 +1,10 @@
 const Posts = require ('../models/Posts.js')
 const Users = require('../models/Users.js')
 
-const PostController = {
+const PostControllers = {
     async create (req, res) {
         try {
-            const post = await Post.create(req,body)
+            const post = await Posts.create(req,body)
             res.status(201).send(post)
             console.log('Hola', post)
         } catch(error) {
@@ -16,7 +16,7 @@ const PostController = {
     async getAll (req, res) {
         try {
             const { page = 1, limit = 10 } = req.query
-            const post = await Post.find()
+            const post = await Posts.find()
             .populate('Comments.UserId')
             .limit(limit)
             .skip(( page -1) * limit)
@@ -29,7 +29,7 @@ const PostController = {
 
     async getById (req, res) {
         try {
-            const post = await Post.findById(req.params._id)
+            const post = await Posts.findById(req.params._id)
             res.status(200).send(post)
         } catch(error) {
             console.error(error)
@@ -39,7 +39,7 @@ const PostController = {
 
     async getPostByName (req, res) {
         try {
-            const post = await Post.find({
+            const post = await Posts.find({
                 $text: {
                     $search: req.params.name
                 },
@@ -53,7 +53,7 @@ const PostController = {
 
     async update (req, res) {
         try {
-            const post = await Post.findByIdAndUpdate(
+            const post = await Posts.findByIdAndUpdate(
                 req.params._id,
                 req.body,
                 { new: true }
@@ -67,7 +67,7 @@ const PostController = {
 
     async delete(req, res) {
         try {
-            const post = await Post.findByIdAndDelete(
+            const post = await Posts.findByIdAndDelete(
                 req.params._id,
                 req.body,
                 { new: true }
@@ -79,9 +79,9 @@ const PostController = {
         }
     },
 
-    async insertCommnent(req, res) {
+    async insertComment(req, res) {
         try {
-            const post = await Post.findByIdAndUpdate(
+            const post = await Posts.findByIdAndUpdate(
                 req.params._id,
                 {
                     $push: {
@@ -99,7 +99,7 @@ const PostController = {
 
     async like(req, res) {
         try {
-            const post = await Post.findByIdAndUpdate(
+            const post = await Posts.findByIdAndUpdate(
                 req.params.PostsId,
                 { $push: { likes: req.user._id }},
                 {new: true}
@@ -113,7 +113,7 @@ const PostController = {
 
     async getInfo(req, res) {
         try {
-            const user = await User.findById(req.user._id)
+            const user = await Users.findById(req.user._id)
             .populate({
                 path: 'CommentsId',
                 populate: {
@@ -127,4 +127,4 @@ const PostController = {
     },
 }
 
-modules.exports = PostController
+modules.exports = PostControllers

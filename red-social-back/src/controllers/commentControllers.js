@@ -1,18 +1,18 @@
-const Comment = require ('../models/comments.js')
-const User = require('../models/Users.js')
-const Post = require('../models/Posts.js')
+const Comments = require ('../models/comments.js')
+const Users = require('../models/Users.js')
+const Posts = require('../models/Posts.js')
 
-const CommentController = {
+const CommentControllers = {
     async create (req, res) {
         try {
-            const comment = await Comment.create({
+            const comment = await Comments.create({
                 ...req.body,
                 UserId: req.user_id
             })
-            await User.findByIdAndUpdate(req.user._id, {
+            await Users.findByIdAndUpdate(req.user._id, {
                 $push: { CommentsIds: comment._id}
             })
-            // await User.findByIdAndUpdate(req.user._id, {
+            // await Users.findByIdAndUpdate(req.user._id, {
             //     $push: { OrderIds: order._id}
             // })
             res.status(201).send(comment)
@@ -23,7 +23,7 @@ const CommentController = {
     },
     async update(req, res) {
         try {
-             const comment = await Comment.findByIdAndUpdate(
+             const comment = await Comments.findByIdAndUpdate(
                 req.params._id,
                 { ...req.body, UserId: req.user._id },
                 { new: true },
@@ -35,4 +35,4 @@ const CommentController = {
     }
 }
 
-module.exports = CommentController
+module.exports = CommentControllers

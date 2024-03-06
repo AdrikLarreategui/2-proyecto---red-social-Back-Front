@@ -3,10 +3,10 @@ const Users = require('../models/Users.js')
 const jwt = require ('jsonwebtoken')
 require('dotenv').config()
 
-const userControllers = {
+const UserControllers = {
         async register(req, res, next) {
             try {
-                const user = await User.create({
+                const user = await Users.create({
                     ...req.body,
                     role: 'user'
             })
@@ -19,7 +19,7 @@ const userControllers = {
 
         async login(req, res) {
             try {
-                const user = await User.findOne({
+                const user = await Users.findOne({
                     email: req.body.email
                 })
                 const Token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
@@ -36,7 +36,7 @@ const userControllers = {
             console.log(req)
             console.log('patata', req.headers.authorization) 
             try {
-                const User = await User.findByAndUpdate(req.user._id, { //consultar esta línea
+                const User = await Users.findByIdAndUpdate(req.user._id, { //consultar esta línea
                     $pull: { tokens: req.headers.authorization }
                 })
                 res.status(200).send({ message: 'Usuario desconectado con éxito'})
@@ -50,7 +50,7 @@ const userControllers = {
 
         async getInfo(req, res) {
             try {
-                const user = await User.findById(req.user._id)
+                const user = await Users.findById(req.user._id)
                 res.send(user)
             } catch(error) {
                 console.error(error)
@@ -58,4 +58,4 @@ const userControllers = {
         }
 }
 
-module.exports = userControllers
+module.exports = UserControllers

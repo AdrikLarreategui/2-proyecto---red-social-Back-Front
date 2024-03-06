@@ -6,11 +6,11 @@ require('dotenv').config()
 const userControllers = {
         async register(req, res, next) {
             try {
-                const User = await User.create({
+                const user = await User.create({
                     ...req.body,
                     role: 'user'
             })
-            res.status(201).send({ message: 'Usuario registrado con exito', User })
+            res.status(201).send({ message: 'Usuario registrado con exito', user })
             } catch(error) {
                 error.origin = 'User'
                 next(error)
@@ -19,14 +19,14 @@ const userControllers = {
 
         async login(req, res) {
             try {
-                const User = await User.findOne({
+                const user = await User.findOne({
                     email: req.body.email
                 })
-                const Token = jwt.sign({ _id: User._id }, process.env.JWT_SECRET)
-                if(User.tokens.length > 4) User.tokens.shift()
-                User.tokens.push(Token)
-                await User.save()
-                res.send({ message: 'Bienvenid@ ' + User.name, Token })
+                const Token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
+                if(user.tokens.length > 4) user.tokens.shift()
+                user.tokens.push(Token)
+                await user.save()
+                res.send({ message: 'Bienvenid@ ' + user.name, Token })
             } catch(error) {
                 console.error(error)
             }
@@ -36,7 +36,7 @@ const userControllers = {
             console.log(req)
             console.log('patata', req.headers.authorization) 
             try {
-                const User = await User.findByAndUpdate(req.user._id, {
+                const User = await User.findByAndUpdate(req.user._id, { //consultar esta línea
                     $pull: { tokens: req.headers.authorization }
                 })
                 res.status(200).send({ message: 'Usuario desconectado con éxito'})
@@ -50,8 +50,8 @@ const userControllers = {
 
         async getInfo(req, res) {
             try {
-                const User = await User.findById(req.user._id)
-                res.send(User)
+                const user = await User.findById(req.user._id)
+                res.send(user)
             } catch(error) {
                 console.error(error)
         }

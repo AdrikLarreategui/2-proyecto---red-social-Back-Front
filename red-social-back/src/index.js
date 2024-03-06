@@ -4,7 +4,7 @@ const { dbConnection } = require('./config/config.js')
 // const { typeError } = require('./middlewares./errors.js')
 const PORT = 3000
 
-// require('dotenv').config()
+require('dotenv').config()
 app.use(express.json())
 
 dbConnection()

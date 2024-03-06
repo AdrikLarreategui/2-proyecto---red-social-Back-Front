@@ -4,9 +4,9 @@ const Users = require('../models/Users.js')
 const PostController = {
     async create (req, res) {
         try {
-            const Post = await Post.create(req,body)
-            res.status(201).send(Post)
-            console.log('Hola', Post)
+            const post = await Post.create(req,body)
+            res.status(201).send(post)
+            console.log('Hola', post)
         } catch(error) {
             console.error(error)
             res.status(501).send({ message: "Ha habido un problema al crear el post" })
@@ -16,11 +16,11 @@ const PostController = {
     async getAll (req, res) {
         try {
             const { page = 1, limit = 10 } = req.query
-            const Post = await Post.find()
+            const post = await Post.find()
             .populate('Comments.UserId')
             .limit(limit)
             .skip(( page -1) * limit)
-            res.status(200).send(Post)
+            res.status(200).send(post)
         } catch (error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema' })
@@ -29,8 +29,8 @@ const PostController = {
 
     async getById (req, res) {
         try {
-            const Post = await Post.findById(req.params._id)
-            res.status(200).send(Post)
+            const post = await Post.findById(req.params._id)
+            res.status(200).send(post)
         } catch(error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema con la búsqueda' })
@@ -39,12 +39,12 @@ const PostController = {
 
     async getPostByName (req, res) {
         try {
-            const Post = await Post.find({
+            const post = await Post.find({
                 $text: {
                     $search: req.params.name
                 },
             })
-            res.status(200).send(Post)
+            res.status(200).send(post)
         } catch(error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema con la búsqueda' })
@@ -53,12 +53,12 @@ const PostController = {
 
     async update (req, res) {
         try {
-            const Post = await Post.findByIdAndUpdate(
+            const post = await Post.findByIdAndUpdate(
                 req.params._id,
                 req.body,
                 { new: true }
             )
-            res.status(201).send({Post,  message: 'Post actualizado con éxito'})
+            res.status(201).send({post,  message: 'Post actualizado con éxito'})
         } catch(error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema con la actualización' })
@@ -67,12 +67,12 @@ const PostController = {
 
     async delete(req, res) {
         try {
-            const Post = await Post.findByIdAndDelete(
+            const post = await Post.findByIdAndDelete(
                 req.params._id,
                 req.body,
                 { new: true }
             )
-            res.status(201).send({Post,  message: 'Post eliminado con éxito'})
+            res.status(201).send({post,  message: 'Post eliminado con éxito'})
         } catch(error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema con la actualización' })
@@ -81,7 +81,7 @@ const PostController = {
 
     async insertCommnent(req, res) {
         try {
-            const Post = await Post.findByIdAndUpdate(
+            const post = await Post.findByIdAndUpdate(
                 req.params._id,
                 {
                     $push: {
@@ -90,7 +90,7 @@ const PostController = {
                 },
                 { new: true }
             )
-            res.send(Post)
+            res.send(post)
         } catch(error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema al insertar el comentario' })
@@ -99,12 +99,12 @@ const PostController = {
 
     async like(req, res) {
         try {
-            const Post = await Post.findByIdAndUpdate(
+            const post = await Post.findByIdAndUpdate(
                 req.params.PostsId,
                 { $push: { likes: req.user._id }},
                 {new: true}
             )
-            res.send(Post)
+            res.send(post)
         } catch(error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema' })
@@ -113,14 +113,14 @@ const PostController = {
 
     async getInfo(req, res) {
         try {
-            const User = await User.findById(req.user._id)
+            const user = await User.findById(req.user._id)
             .populate({
                 path: 'CommentsId',
                 populate: {
                     path: 'PostsId',
                 },
             })
-            res.send(User)
+            res.send(user)
         } catch(error) {
             console.error(error)
         }

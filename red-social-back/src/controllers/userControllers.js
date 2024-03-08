@@ -23,20 +23,23 @@ const UserControllers = {
                     email: req.body.email
                 })
                 const Token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET)
+                console.log('Hola', process.env.JWT_SECRET)
                 if(user.tokens.length > 4) user.tokens.shift()
                 user.tokens.push(Token)
                 await user.save()
                 res.send({ message: 'Bienvenid@ ' + user.name, Token })
             } catch(error) {
                 console.error(error)
+                res.status(500).send(error)
             }
         },
         
-        async logout(req, res) {  
-            console.log(req)
-            console.log('patata', req.headers.authorization) 
+        async logout(req, res, next) {  
+            // console.log(req)
+            // console.log('patata', req.headers.authorization) 
             try {
-                const User = await Users.findByIdAndUpdate(req.user._id, { //consultar esta línea
+                console.log('Hola')
+                await Users.findByIdAndUpdate(req.user._id, { //consultar esta línea
                     $pull: { tokens: req.headers.authorization }
                 })
                 res.status(200).send({ message: 'Usuario desconectado con éxito'})
@@ -45,6 +48,7 @@ const UserControllers = {
                 res.status(500).send({
                     message: 'Hubo un problema al intentar desconectar al usuario',
                 })
+                next(error)
             }
         },
 

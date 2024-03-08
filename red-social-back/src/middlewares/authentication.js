@@ -6,6 +6,7 @@ require('dotenv').config()
 
 const authentication = async(req, res, next) => {
     try{
+        console.log('patata', req)
         const Token = req.headers.authorization
         const payload = jwt.verify(Token, process.env.JWT_SECRET)
         const user = await Users.findOne({ _id:payload._id, tokens: Token})

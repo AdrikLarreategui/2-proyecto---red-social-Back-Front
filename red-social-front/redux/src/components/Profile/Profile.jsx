@@ -1,17 +1,17 @@
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
-const Profile = () => {
-    const { user } = useSelector((state) => state.auth)
+// const Profile = () => {
+//     const { user } = useSelector((state) => state.auth)
 
-    return (
-        <>
-        <h1>Profile</h1>
-        <p>{user.name}</p> 
-        <p>{user.email}</p>
-        <img src = {`http://localhost:3000/${user.user_img}`}/> 
-        {/* adaptar a formato de base de datos propia */}
-        </>
-    )
-}
+//     return (
+//         <>
+//         <h1>Profile</h1>
+//         <p>{user.name}</p> 
+//         <p>{user.email}</p>
+//         <img src = {`http://localhost:3000/${user.user_img}`}/> 
+//         {/* adaptar a formato de base de datos propia */}
+//         </>
+//     )
+// }
 
-export default Profile
+// export default Profile

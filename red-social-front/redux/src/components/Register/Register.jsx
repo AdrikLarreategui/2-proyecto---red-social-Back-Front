@@ -1,20 +1,19 @@
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { register, reset } from '../../redux/auth/authSlice'
-import { notification } from 'antd'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { register, reset } from '../../redux/auth/authSlice'
+// import { notification } from 'antd'
 
 const Register = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    // const dispatch = useDispatch()
+    // const navigate = useNavigate()
     const [ formData, setFormData ] = useState({
         name: '',
-        username: '',
         password: '', //Los campos a rellenar tienen que coincidir con los existentes en la base de datos del back. Comprobar
         email: ''
     })
 
-    const { name, username, password, email } = formData
+    const { name, password, email } = formData
     const { isSuccess, message, isError } = useSelector((state) => state.auth)
 
     useEffect(() => {
@@ -67,13 +66,6 @@ const Register = () => {
                 value = { name }
                 onChange={onChange}
                 placeholder='Tu nombre aquí'
-            />
-            <input 
-                type = "text"
-                name = "username"
-                value = { username }
-                onChange={onChange}
-                placeholder='Tu nombre de usuario aquí'
             />
             <input 
                 type = "password"

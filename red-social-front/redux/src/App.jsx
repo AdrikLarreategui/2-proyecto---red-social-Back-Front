@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// import { useState } from 'react'
+// import { React } from 'react'
+import Register from './components/Register/Register'
+import Login from './components/Login/Login'
+import Profile from './components/Profile/Profile'
+import TheHeader from './components/TheHeader/TheHeader'
+// import Profile from '../src/components/Profile/Profile'
+import Home from './components/Home/Home'
+// import PostDetail from './components/Posts/PostDetail/PostDetail'
+// import Search from './components/Search/Search'
+// import AdminZone from './guards/AdminZone'
+// import Admin from './components/Admin/Admin'
+// import PrivateZone from './guards/PrivateZone'
+// import NotFound from './components/NotFound/NotFound'
+
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<BrowserRouter>
+			<TheHeader />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/profile" element={<Profile />} />
+				{/* <Route path="/profile" element={<PrivateZone> <Profile /></PrivateZone>}/>
+          		<Route path='/admin' element= {<AdminZone> <Admin /> </AdminZone> } />
+          		<Route path='/post/:id' element= { <PostDetail />} />
+          		<Route path='/search/:postName' element = { <Search /> } />
+          		<Route path= '*' element= {<NotFound />}/> */}
+			</Routes>
+		</BrowserRouter>
+	)
 }
 
 export default App
+
+// import { useState } from 'react'
+// import { React } from 'react'
+// import Login from '../src/components/Login/Login'
+// import Register from '../src/components/Register/Register'
+// import Profile from '../src/components/Profile/Profile'
+// import Home from './components/Home/Home'
+// import TheHeader from './components/TheHeader/TheHeader'
+// import PostDetail from './components/Posts/PostDetail/PostDetail'
+// import Search from './components/Search/Search'
+// import AdminZone from './guards/AdminZone'
+// import Admin from './components/Admin/Admin'
+// import PrivateZone from './guards/PrivateZone'
+// import NotFound from './components/NotFound/NotFound'
+// import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// import './App.css'
+
+
+// function App() {
+//   return (
+//     <div className='App'>
+//       <BrowserRouter>
+      {/* <TheHeader /> */}
+        // <Routes>
+          {/* <Route path='/' element= {<Home />} /> */}
+          // <Route path='/login' element={ <Login /> } />
+          // <Route path='/register' element={ <Register /> } />
+          {/* <Route path="/profile" element={<PrivateZone> <Profile /></PrivateZone>}/>
+          <Route path='/admin' element= {<AdminZone> <Admin /> </AdminZone> } />
+          <Route path='/post/:id' element= { <PostDetail />} />
+          <Route path='/search/:postName' element = { <Search /> } />
+          <Route path= '*' element= {<NotFound />}/> */}
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   )
+// }
+
+// export default App
+
+//Completar conforme haya más info

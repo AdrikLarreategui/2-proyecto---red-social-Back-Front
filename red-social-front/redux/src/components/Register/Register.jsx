@@ -1,14 +1,40 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { register } from '../../redux/auth/authSlice'
+// import { useNavigate } from 'react-router-dom'
+// import { useEffect, useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { register, reset } from '../../redux/auth/authSlice'
+// import { notification } from 'antd'
 
 const Register = () => {
+     // const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
 		password: '',
 	})
+    const { name, email, password } = formData
+        // const { isSuccess, message, isError } = useSelector((state) => state.auth)
+        // const dispatch = useDispatch()
+        // useEffect(() => {
+        //     if (isSuccess) {
+        //       notification.success({
+        //         message: "Success",
+        //         description: message,
+        //       })
+        //     navigate('/login')
+        //     }
+        // if (isError) {
+            //       notification.error({ 
+            //         message: "Error", 
+            //         description: message 
+            //     });
+            //     }
+            //     dispatch(reset())
+            //   }, [isSuccess, isError, message]);
+
 
 	const handleChange = (e) => {
 		setFormData({
@@ -23,7 +49,7 @@ const Register = () => {
 		dispatch(register(formData))
 	}
 
-	const { name, email, password } = formData
+	
 	return (
 		<>
 			<h1>Register</h1>

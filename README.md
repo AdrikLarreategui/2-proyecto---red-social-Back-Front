@@ -1,6 +1,7 @@
 # 2º Proyecto de Red Social: Backend y FrontEnd
 
-El presente repositorio quiere mostrar el aspecto que tendría una red social básica, presentando la opción de registrarse a los nuevos usuarios, conectarse y desconectarse a los ya registrados, escribir temas nuevos y contestar a los temas existentes.
+El presente repositorio quiere mostrar el aspecto que tendría una red social básica, presentando la opción de registrarse a los nuevos usuarios, conectarse y desconectarse a los ya registrados, escribir temas nuevos y contestar a los temas existentes. Asimismo, existen guardas, que evitan la entrada de uauarios no autorizados, como por ejemplo, personas sin registrar o usuarios sin el rango de administrador.
+Por otra parte, la web redirecciona al usuario al inicio tanto después del registro como del logueo.
 
 ## Recursos utilizados
 

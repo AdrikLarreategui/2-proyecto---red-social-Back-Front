@@ -17,3 +17,5 @@ La aplicación generada debería mostrar de inicio al arrancar, mostrando la pos
 Una vez logueado el usuario, debe poder escribir nuevos posts o mensajes en su perfil, ási como acceder a los datos del mismo. Por otra parte, dicho usuario deebería tener la capacidad de ver los posts que hayan escrito otros usuarios, así como interactuar con ellos (por ejemplo, contestando). Todo ello tiene su código relacionado, tanto en redux como en react y la parte correspondiente de backend.
 
 Finalmente, existe una parte llamada NotFound, para cuando no es posible encontrar aquello que se busca.
+
+A continuación, se muestra el enlace en Vercer, donde se muestra el proyecto desplegado: 

@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { register } from '../../redux/auth/authSlice'
-// import { useNavigate } from 'react-router-dom'
-// import { useEffect, useState } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { register, reset } from '../../redux/auth/authSlice'
-// import { notification } from 'antd'
+// import { useState } from 'react'
+// import { useDispatch } from 'react-redux'
+// import { register } from '../../redux/auth/authSlice'
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { register, reset } from '../../redux/auth/authSlice'
+import { notification } from 'antd'
 
 const Register = () => {
-     // const navigate = useNavigate()
+     const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const [formData, setFormData] = useState({
 		name: '',
@@ -27,13 +27,13 @@ const Register = () => {
         //     navigate('/login')
         //     }
         // if (isError) {
-            //       notification.error({ 
-            //         message: "Error", 
-            //         description: message 
-            //     });
-            //     }
-            //     dispatch(reset())
-            //   }, [isSuccess, isError, message]);
+        //           notification.error({ 
+        //             message: "Error", 
+        //             description: message 
+        //         });
+        //         }
+        //         dispatch(reset())
+        //       }, [isSuccess, isError, message]);
 
 
 	const handleChange = (e) => {

@@ -10,7 +10,6 @@ const Search = () => {
 
     useEffect(() => {
         dispatch(getPostByName(postName))
-        // console.log(postName)
     }, [postName])
 
     return (

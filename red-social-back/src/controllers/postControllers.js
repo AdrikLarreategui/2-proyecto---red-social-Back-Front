@@ -127,4 +127,4 @@ const PostControllers = {
     },
 }
 
-modules.exports = PostControllers
+module.exports = PostControllers

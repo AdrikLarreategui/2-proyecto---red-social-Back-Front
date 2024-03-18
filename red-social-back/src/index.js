@@ -12,7 +12,7 @@ dbConnection()
 
 app.use(cors())
 app.use('/users', require('../src/routes/Users.js'))
-// app.use('/posts', require('../src/routes/Posts.js'))
+app.use('/posts', require('../src/routes/Posts.js'))
 app.use(typeError)
 
 app.listen(PORT, () => console.log('server started at port ' + PORT))

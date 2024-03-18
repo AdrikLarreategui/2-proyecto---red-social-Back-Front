@@ -35,11 +35,9 @@ const UserControllers = {
         },
         
         async logout(req, res, next) {  
-            // console.log(req)
-            // console.log('patata', req.headers.authorization) 
             try {
                 console.log('Hola')
-                await Users.findByIdAndUpdate(req.user._id, { //consultar esta línea
+                await Users.findByIdAndUpdate(req.user._id, { 
                     $pull: { tokens: req.headers.authorization }
                 })
                 res.status(200).send({ message: 'Usuario desconectado con éxito'})

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import postsService from './postsService'
+import axios from "axios";
 
 const initialState = {
     posts: [],

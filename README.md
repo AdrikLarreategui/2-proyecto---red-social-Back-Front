@@ -18,4 +18,5 @@ Una vez logueado el usuario, debe poder escribir nuevos posts o mensajes en su p
 
 Finalmente, existe una parte llamada NotFound, para cuando no es posible encontrar aquello que se busca.
 
-A continuación, se muestra el enlace en Vercer, donde se muestra el proyecto desplegado: 
+A continuación, se muestra el enlace en Vercel, donde se muestra el proyecto desplegado: 
+https://vercel.com/adriklarreateguis-projects/2-proyecto-red-social-back-y-front
